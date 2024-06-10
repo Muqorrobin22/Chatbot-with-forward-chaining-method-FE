@@ -23,6 +23,14 @@ function App() {
                     <img src="/Avatar_user.svg" alt="User icon"/>
                 </section>
             </div>
+            <div className={"wrapper__input"}>
+                <div className={"input_chat"}>
+                    <input type="text" placeholder={"Masukkan pertanyaan anda"} className={"chat"}/>
+                    <div className={"images"}>
+                        <img src="/send.svg" alt="Send Icon"/>
+                    </div>
+                </div>
+            </div>
         </section>
     </>
   )
