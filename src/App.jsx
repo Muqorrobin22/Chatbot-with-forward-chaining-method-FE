@@ -325,7 +325,7 @@ function App() {
                 <h1>Chatbot Perpustakaan PENS</h1>
             </div>
             <div className={"wrapper__main"}>
-                {message.map(item => {
+                {message.slice().map(item => {
                     if (item.name === "Bot") {
                         return <div key={item.message}> <BotsMessage messages={item.message}/> </div>
                     } else if (item.name === "User") {
