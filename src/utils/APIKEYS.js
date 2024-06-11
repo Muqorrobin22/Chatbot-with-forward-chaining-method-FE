@@ -1,1 +1,1 @@
-export const APIKEYS = process.env.PUBLIC_API
+export const APIKEYS = import.meta.env.VITE_PUBLIC_API;

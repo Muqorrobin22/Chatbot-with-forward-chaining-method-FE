@@ -1,9 +1,10 @@
 
 import './App.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {BotsMessage} from "./components/bots/bots.jsx";
 import {UsersMessage} from "./components/users/users.jsx";
 import {welcomeStateMessage} from "./utils/variables.js";
+import {APIKEYS} from "./utils/APIKEYS.js";
 
 function App() {
     const [state, setState] = useState(false)
@@ -11,6 +12,9 @@ function App() {
     const [message, setMessage] = useState([])
     const [ruleBaseState, setRuleBaseState] = useState(null)
 
+    useEffect(()=> {
+        console.log("api keys: ", APIKEYS)
+    }, [])
 
 
   return (
