@@ -11,12 +11,24 @@ function App() {
     const [welcomeState, setWelcomeState] = useState(false)
     const [message, setMessage] = useState([])
     const [ruleBaseState, setRuleBaseState] = useState(null)
+    const [textMessage, setTextMessage] = useState('')
 
 
     const formatOutput = (inputString) => {
         let formatEnter = inputString.replace(/\n/g, "<br>");
         let formatLink = formatEnter.replace( /\\link(.*?)\\link/g, '<a href="$1" target="_blank">$1</a>')
         return formatLink;
+    }
+
+    const onSendButton = (value) => {
+        console.log("input: ", value)
+        if(value === "") {
+            return ;
+        }
+
+        let userMessage = {name: "User", messages: value}
+        setMessage(([...message, userMessage]))
+
     }
 
     useEffect(()=> {
@@ -56,9 +68,12 @@ function App() {
             </div>
             <div className={"wrapper__input"}>
                 <div className={"input_chat"}>
-                    <input type="text" placeholder={"Masukkan pertanyaan anda"} className={"chat"}/>
+                    <input type="text" placeholder={"Masukkan pertanyaan anda"} className={"chat"} onChange={e => setTextMessage(e.target.value)} onKeyDown={(e) => {
+                        if(e.key === "Enter") {
+                            onSendButton(textMessage)
+                    }}} />
                     <div className={"images"}>
-                        <img src="/send.svg" alt="Send Icon"/>
+                        <img src="/send.svg" alt="Send Icon" onClick={() => onSendButton(textMessage)}/>
                     </div>
                 </div>
             </div>
