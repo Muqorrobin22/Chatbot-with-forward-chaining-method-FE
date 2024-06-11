@@ -1,0 +1,15 @@
+.main_bot {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 30px;
+    p {
+        margin: 0 1em;
+        background: rgba(89, 111, 183, 0.5);
+        color: #11235A;
+        border-radius: 15px;
+        padding: 13px 30px;
+        line-height: 1.5;
+        text-align: justify;
+        max-width: 500px;
+    }
+}

@@ -1,0 +1,2 @@
+export const welcomeStateMessage = 'Halo, selamat datang di chatbot perpustakaan PENS!\n' +
+    '                        Chatbot kami siap membantu Anda dengan berbagai informasi seputar perpustakaan, seperti koleksi buku, pemesanan buku baru, lokasi buku di rak, dan lain-lain. Apa yang ingin Anda tanyakan?'

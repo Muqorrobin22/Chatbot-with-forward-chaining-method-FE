@@ -1,0 +1,1 @@
+export const APIKEYS = process.env.PUBLIC_API
