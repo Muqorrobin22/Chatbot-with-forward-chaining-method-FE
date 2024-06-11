@@ -12,10 +12,31 @@ function App() {
     const [message, setMessage] = useState([])
     const [ruleBaseState, setRuleBaseState] = useState(null)
 
+
+    const formatOutput = (inputString) => {
+        let formatEnter = inputString.replace(/\n/g, "<br>");
+        let formatLink = formatEnter.replace( /\\link(.*?)\\link/g, '<a href="$1" target="_blank">$1</a>')
+        return formatLink;
+    }
+
     useEffect(()=> {
-        console.log("api keys: ", APIKEYS)
+        // console.log("api keys: ", APIKEYS)
+
+        if(!welcomeState){
+            console.log("running")
+            setWelcomeState(true)
+            let messageChat = {name: "Bot", messages: welcomeStateMessage}
+            setTimeout(() => {
+                setMessage([...message, messageChat])
+
+            }, 1000)
+        }
+
+
+
     }, [])
 
+    console.log("messages: ", message)
 
   return (
     <>
@@ -25,8 +46,13 @@ function App() {
                 <h1>Chatbot Perpustakaan PENS</h1>
             </div>
             <div className={"wrapper__main"}>
-                <BotsMessage messages={welcomeStateMessage} />
-                <UsersMessage messages={"Bagaimana cara meminjam buku perpustakaan?"} />
+                {message.map(item => {
+                    if (item.name === "Bot") {
+                        return <div key={item.messages}> <BotsMessage messages={item.messages}/> </div>
+                    } else {
+                        return <div key={item.messages}> <UsersMessage messages={item.messages}/> </div>
+                    }
+                })}
             </div>
             <div className={"wrapper__input"}>
                 <div className={"input_chat"}>
