@@ -1,6 +1,6 @@
 
 import './App.css'
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {BotsMessage} from "./components/bots/bots.jsx";
 import {UsersMessage} from "./components/users/users.jsx";
 import {welcomeStateMessage} from "./utils/variables.js";
@@ -18,6 +18,9 @@ function App() {
 
     const dispatch = useDispatch();
     const allMessages = useSelector(state => state.messagesArray.messages);
+
+    const ref = useRef(null)
+
 
 
     const formatOutput = (inputString) => {
@@ -291,6 +294,8 @@ function App() {
 
         } catch (e) {
             console.log("error: ", e)
+        } finally {
+            ref.current?.scrollIntoView({behavior: "smooth", block: "center", inline: "end"});
         }
 
     }
@@ -335,7 +340,7 @@ function App() {
                     if (item.name === "Bot") {
                         return <div key={item.message}> <BotsMessage messages={item.message}/> </div>
                     } else if (item.name === "User") {
-                        return <div key={item.message}> <UsersMessage messages={item.message}/> </div>
+                        return <div key={item.message} ref={ref} > <UsersMessage messages={item.message}/> </div>
                     }
                 })}
             </div>
