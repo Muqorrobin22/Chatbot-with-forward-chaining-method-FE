@@ -109,8 +109,10 @@ export function ruleBaseDetect(msg) {
     // Start of: Rules - Syarat Wisuda
 
     const rule1_wisuda = ["syarat", "wisuda"]
+    const rule2_wisuda = ["wisuda"]
 
     let rule1_wisuda_isValid = rule1_wisuda.every(el => msg.message.includes(el))
+    let rule2_wisuda_isValid = rule2_wisuda.every(el => msg.message.includes(el))
 
     // End of: Rules - Syarat Wisuda
 
@@ -164,11 +166,13 @@ export function ruleBaseDetect(msg) {
     const rule2_struktur_organisasi = ["organisasi"]
     const rule3_struktur_organisasi = ["bentuk", "organisasi"]
     const rule4_struktur_organisasi = ["sistem", "organisasi"]
+    const rule5_struktur_organisasi = ["pustakawan"]
 
     let rule1_struktur_organisasi_isValid = rule1_struktur_organisasi.every(element => msg.message.includes(element))
     let rule2_struktur_organisasi_isValid = rule2_struktur_organisasi.every(element => msg.message.includes(element))
     let rule3_struktur_organisasi_isValid = rule3_struktur_organisasi.every(element => msg.message.includes(element))
     let rule4_struktur_organisasi_isValid = rule4_struktur_organisasi.every(element => msg.message.includes(element))
+    let rule5_struktur_organisasi_isValid = rule5_struktur_organisasi.every(element => msg.message.includes(element))
 
     // End of: Rules - Struktur Organisasi
 
@@ -314,7 +318,7 @@ export function ruleBaseDetect(msg) {
         return "sertifikat_akreditasi"
     } else if(bebasPinjamD3Valid || bebasPinjamD4Valid || bebasPinjamS2D3Valid || bebasPinjamS2D4Valid) {
         return "bebas_pinjam"
-    } else if(rule1_wisuda_isValid) {
+    } else if(rule1_wisuda_isValid || rule2_wisuda_isValid) {
         return "syarat_wisuda"
     } else if (msg.message.includes("kaset") || msg.message.includes("cd") || msg.message.includes("dvd") || ketentuanCdValid || isiCdValid) {
         return "Isi_CD_Proyek_Akhir"
@@ -338,7 +342,7 @@ export function ruleBaseDetect(msg) {
         return "keanggotaan"
     }else if(rule1_koleksi_perpus_isValid ) {
         return "koleksi_perpus"
-    }else if(rule1_struktur_organisasi_isValid || rule2_struktur_organisasi_isValid || rule3_struktur_organisasi_isValid || rule4_struktur_organisasi_isValid) {
+    }else if(rule1_struktur_organisasi_isValid || rule2_struktur_organisasi_isValid || rule3_struktur_organisasi_isValid || rule4_struktur_organisasi_isValid || rule5_struktur_organisasi_isValid) {
         return "struktur_organisasi"
     }else if(rule1_layanan_loker_isValid || rule2_layanan_loker_isValid ) {
         return "layanan_loker"
